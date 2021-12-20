@@ -1,0 +1,16 @@
+.personal-block{
+  display: flex;
+  flex-direction: row;
+  img {
+    width: 5em;
+    border-radius: 50%;
+  }
+  .meta-block {
+    margin-top: 0;
+    margin-left: 1.5em;
+  }
+  .meta-message {
+    margin-top: 1em;
+    display: block;
+  }
+}
