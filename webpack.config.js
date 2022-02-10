@@ -1,6 +1,7 @@
 // common env
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack')
 
 module.exports = {
   entry: {
@@ -8,10 +9,12 @@ module.exports = {
   },
 
   devServer: {
-    port: 1234
+    port: 1234,
+    hot: true,
   },
   
   plugins: [
+    new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
     })
@@ -19,8 +22,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: 'babel-loader',
+        test: /\.(js|jsx)$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        },
         exclude: /node_modules/,
       },
       {
@@ -37,7 +45,8 @@ module.exports = {
             loader: 'sass-loader'
           }
         ]
-      }
+      },
+
     ]
   },
   output: {

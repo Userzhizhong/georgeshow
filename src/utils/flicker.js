@@ -26,7 +26,9 @@ var prop = R.curry(function(property, object) {
 var mediaUrl = R.compose(R.prop('m'), R.prop('media'));
 
 // var srcs = R.compose(R.map(mediaUrl),R.prop('items'));
-
+/**
+ * img ::  String -> Element
+ */
 var img = function (url) {
   return $('<img />', {src: url});
 }
